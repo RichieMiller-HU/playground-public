@@ -123,7 +123,7 @@
     });
     renderDay(todayIdx);
     var sel = $('#day-tab-' + todayIdx);
-    if (sel && tabs.scrollWidth > tabs.clientWidth) tabs.scrollLeft = sel.offsetLeft - 20;
+    if (sel && tabs.scrollWidth > tabs.clientWidth) tabs.scrollLeft += sel.getBoundingClientRect().left - tabs.getBoundingClientRect().left - 40;
   }
 
   /* ---- Trainer hover tilt (fine pointers only) ---------------------- */
