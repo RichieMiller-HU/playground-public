@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Időpontfoglalás – XL-FittLesz Kaposvár</title>
+<meta name="description" content="Foglalj csoportos órát, fallabda pályát, személyi edzést vagy wellness időpontot az XL-FittLesz kaposvári edzőteremben – percek alatt, online.">
+<meta name="theme-color" content="#07080b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Oswald:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/booking.css">
+<link rel="stylesheet" href="assets/chatbot.css">
+</head>
+<body class="bk-body">
+<a class="bk-skip" href="#bk-panel">Ugrás a foglaláshoz</a>
+
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a class="nav__logo" href="index.html" aria-label="XL FittLesz – főoldal"><span>XL</span> FITTLESZ</a>
+    <button class="nav__toggle" type="button" aria-label="Menü megnyitása" aria-expanded="false" aria-controls="nav-menu"><span></span></button>
+    <nav class="nav__menu" id="nav-menu" aria-label="Főmenü">
+      <a class="nav__link" href="index.html">Főoldal</a>
+      <a class="nav__link" href="index.html#orak">Óráink</a>
+      <a class="nav__link" href="index.html#orarend">Órarend</a>
+      <a class="nav__link" href="index.html#edzok">Edzőink</a>
+      <a class="nav__link" href="index.html#arak">Árak</a>
+      <a class="btn btn--primary nav__cta" href="foglalas.html" aria-current="page">Foglalás</a>
+    </nav>
+  </div>
+</header>
+
+<main class="bk" id="main">
+  <div class="bk-grain" aria-hidden="true"></div>
+  <section class="container bk-hero">
+    <p class="eyebrow">Online foglalás</p>
+    <h1 class="bk-title">FOGLALJ <span>IDŐPONTOT</span></h1>
+    <p class="bk-lead">Négy lépés, egy perc. Válassz órát, pályát vagy wellnesst – mi tartjuk a helyed.</p>
+    <button class="btn btn--ghost bk-mine-btn" type="button" id="bk-open-mine" aria-haspopup="dialog">Foglalásaim <span class="bk-badge" id="bk-count" hidden>0</span></button>
+  </section>
+
+  <div class="container bk-layout">
+    <div class="bk-main">
+      <div class="bk-progress" role="progressbar" aria-label="Foglalás előrehaladása" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1" id="bk-progress"><i id="bk-progress-bar"></i></div>
+      <ol class="bk-steps" id="bk-steps" aria-label="Lépések"></ol>
+      <section class="bk-panel" id="bk-panel" tabindex="-1" aria-live="polite"></section>
+      <div class="bk-actions" id="bk-actions">
+        <button class="btn btn--ghost" type="button" id="bk-back">&larr; Vissza</button>
+        <button class="btn btn--primary" type="button" id="bk-next">Tovább &rarr;</button>
+      </div>
+    </div>
+
+    <aside class="bk-aside" aria-label="Foglalás összegzése">
+      <details class="bk-sum" id="bk-sum" open>
+        <summary><span>Összegzés</span><em id="bk-sum-mini">Még nincs választás</em></summary>
+        <div class="bk-sum__body" id="bk-sum-body"></div>
+      </details>
+    </aside>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="nav__logo" href="index.html"><span>XL</span> FITTLESZ</a>
+        <p class="footer__slogan">LEHETETLEN MÁRPEDIG NINCS!</p>
+        <p>Arany János u. 2/A, 7400 Kaposvár</p>
+      </div>
+      <div>
+        <h3>Nyitvatartás</h3>
+        <ul class="footer__hours"><li>Hétfő–Péntek <b>06:00–22:00</b></li><li>Szombat–Vasárnap <b>08:00–20:00</b></li></ul>
+      </div>
+      <div>
+        <h3>Kapcsolat</h3>
+        <ul><li><a href="tel:+36300828181">+36 30 082 8181</a></li><li><a href="mailto:hello@xlfittlesz.hu">hello@xlfittlesz.hu</a></li></ul>
+      </div>
+      <div>
+        <h3>Oldalak</h3>
+        <ul><li><a href="index.html">Főoldal</a></li><li><a href="index.html#orarend">Órarend</a></li><li><a href="index.html#arak">Árak</a></li><li><a href="foglalas.html">Foglalás</a></li></ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Foglalásaim drawer -->
+<div class="bk-scrim" id="bk-scrim" hidden></div>
+<aside class="bk-drawer" id="bk-drawer" role="dialog" aria-modal="true" aria-labelledby="bk-drawer-title" hidden>
+  <header>
+    <h2 id="bk-drawer-title">Foglalásaim</h2>
+    <button type="button" class="bk-x" id="bk-close-mine" aria-label="Foglalásaim bezárása">&times;</button>
+  </header>
+  <div id="bk-drawer-body"></div>
+</aside>
+
+<script src="assets/data.js"></script>
+<script src="assets/booking.js"></script>
+<script src="assets/chatbot.js" defer></script>
+</body>
+</html>
