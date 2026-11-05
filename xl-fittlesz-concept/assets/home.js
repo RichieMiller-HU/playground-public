@@ -82,13 +82,14 @@
     [['16:30', 'Spinracing', 'spinracing', 'Adri', 'Spinning terem'], ['17:00', 'Kangoo Tabata', 'kangoo-tabata', 'Betty', 'Nagyterem']],
     [['09:00', 'Spinracing', 'spinracing', 'Adri', 'Spinning terem'], ['16:00', 'Nihon Ju Jitsu', 'nihon-ju-jitsu', '', 'Kisterem'], ['17:00', 'Gyerekjóga', 'gyerekjoga', 'Andi', 'Nagyterem'], ['18:00', 'Spinning', 'spinning', 'Kata', 'Spinning terem'], ['18:30', 'WeStep', 'westep', 'Ági', 'Nagyterem'], ['19:30', 'Latin Cardio', 'latin-cardio', 'Bíbor', 'Nagyterem']],
     [['17:00', 'Kangoo Power', 'kangoo-power', 'Betty', 'Nagyterem'], ['18:00', 'Spinning', 'spinning', 'Éva', 'Spinning terem']],
-    [['09:00', 'Kangoo Power – kezdő', 'kangoo-power', 'Betty', 'Nagyterem']],
+    [['09:00', 'Kangoo Power – kezdő', 'kangoo-power-kezdo', 'Betty', 'Nagyterem']],
     [['17:00', 'Spinning', 'spinning', 'Kata', 'Spinning terem']]
   ];
   var tabs = $('#day-tabs'), slotsEl = $('#slots');
   var arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
 
+  function slotOffset(d) { var n = 0; for (var k = 0; k < d; k++) n += SCHEDULE[k].length; return n; }
   function renderDay(d, focusTab) {
     $$('.day-tab', tabs).forEach(function (t, i) {
       var sel = i === d;
@@ -100,7 +101,8 @@
     var nowMin = new Date().getHours() * 60 + new Date().getMinutes(), nextMarked = false;
     slotsEl.innerHTML = SCHEDULE[d].map(function (s, i) {
       var hm = s[0].split(':'), mins = (+hm[0]) * 60 + (+hm[1]);
-      var id = d + '-' + hm[0] + hm[1] + '-' + s[2];
+      /* slot ids match window.XL.schedule in assets/data.js: s01…s19 in weekly order */
+      var id = 's' + pad(slotOffset(d) + i + 1);
       var past = d === todayIdx && mins <= nowMin, badge = '';
       if (past) badge = '<span class="slot__badge">Elmúlt</span>';
       else if (d === todayIdx && !nextMarked) { badge = '<span class="slot__badge">Következő</span>'; nextMarked = true; }
